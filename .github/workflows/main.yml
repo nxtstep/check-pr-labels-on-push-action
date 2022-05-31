@@ -10,9 +10,13 @@ jobs:
     steps:
     - name: Check PR labels action step
       id: check_pr_labels
-      uses: shioyang/check-pr-labels-on-push-action@v1.0.3
+      uses: nxtstep/check-pr-labels-on-push-action@master
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         labels: '["enhancement"]'
     - name: See result
       run: echo "${{ steps.check_pr_labels.outputs.result }}"
+    - name: Matching labels
+      run: echo "${{ steps.check_pr_labels.outputs.matchedLabels }}"
+    - name: All labels
+      run: echo "${{ steps.check_pr_labels.outputs.allLabels }}"
