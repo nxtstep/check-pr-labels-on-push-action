@@ -4343,10 +4343,11 @@ async function run() {
     const octokit = github.getOctokit(token);
     const labelNames = await getPullRequestLabelNames(octokit);
     const labels = getInputLabels();
-    const result = labels.every((label) => labelNames.findIndex((value) => label === value) >= 0);
+    const matchedLabels = labels.filter(label => labelNames.includes(label));
+    const result = matchedLabels.length == labels.length;
     core.setOutput("result", result);
     core.setOutput("allLabels", labelNames);
-    core.setOutput("matchedLabels", labels);
+    core.setOutput("matchedLabels", matchedLabels);
 }
 async function getPullRequestLabelNames(octokit) {
     const owner = github.context.repo.owner;
