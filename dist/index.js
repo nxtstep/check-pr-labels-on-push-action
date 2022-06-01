@@ -4344,8 +4344,8 @@ async function run() {
     const labelNames = await getPullRequestLabelNames(octokit);
     const labels = getInputLabels();
     const result = labels.every((label) => labelNames.findIndex((value) => label === value) >= 0);
-    core.setOutput("result", result);
-    core.setOutput("labelNames", labelNames);
+    // core.setOutput("result", result);
+    // core.setOutput("labelNames", labelNames);
     core.setOutput("labels", labels);
 }
 async function getPullRequestLabelNames(octokit) {
