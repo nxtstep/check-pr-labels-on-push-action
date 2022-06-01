@@ -1,4 +1,4 @@
-name: 'Check PR Labels on Push'
+name: 'Match PR Labels'
 description: 'This action check if given labels have be applied to the PR when pushed.'
 inputs:
   github-token:  # id of input
